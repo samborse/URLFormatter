@@ -40,13 +40,13 @@ public class NeuedaURLFormatController {
 		LOGGER.info("URL to format " + formattedURLReq.getUrl());
 		LOGGER.info("Saved URL to format " + request.getRequestURL().toString());
 		String longUrl = formattedURLReq.getUrl();
-		
+		if (formattedURLReq.validateURL(longUrl)) {
 			String formattedURL = urlConverterService.getShortenedURL(request.getRequestURL().toString(),
 					formattedURLReq.getUrl());
 			LOGGER.info("Foramatted url is : " + formattedURL);
 			return formattedURL;
-		//}
-		//throw new NeuedaNonBlockingException("Please enter a valid URL");
+		}
+		throw new NeuedaNonBlockingException("Not valid URL");
 			
 	}
 

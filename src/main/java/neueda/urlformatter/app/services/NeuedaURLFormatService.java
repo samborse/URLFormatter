@@ -38,7 +38,6 @@ public class NeuedaURLFormatService {
     public String getLongURLFromID(String uniqueID) throws NeuedaNonBlockingException {
         Long dictionaryKey = NeuedaUniqueIDCreator.getURLDDKey(uniqueID);
         String orgLongURL = urlRepository.getOriginalLongUrl(dictionaryKey);
-        LOGGER.info("Converting shortened URL back to {}", orgLongURL);
         return orgLongURL;
     }
 
